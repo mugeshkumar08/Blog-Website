@@ -67,7 +67,6 @@ nav ul li a:not(.active):hover{
     margin-top: 20px;
 }
   
-  /* Add some styling to each blog container */
   .blog-container {
     display: flex;
     flex-wrap: wrap;

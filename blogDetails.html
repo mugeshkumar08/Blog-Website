@@ -26,20 +26,15 @@
     <a href="blog.html">Back to Blog List</a>
 
     <script>
-      // Retrieve the blog index from URL parameters
 const params = new URLSearchParams(window.location.search);
 const blogIndex = parseInt(params.get('index'), 10);
 
-// Retrieve all blogs from localStorage
 const blogs = JSON.parse(localStorage.getItem('blogs')) || [];
 
-// Check if the blog index is valid
 if (!isNaN(blogIndex) && blogIndex >= 0 && blogIndex < blogs.length) { 
     const blog = blogs[blogIndex];
 
     const blogDetailContainer = document.getElementById('blogDetail');
-
-    // Populate the blog details
     blogDetailContainer.innerHTML = `
         <h2>${blog.title}</h2>
         <img src="${blog.image}" alt="Blog Image">

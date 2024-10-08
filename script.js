@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     let editorInstance;
 
-    // Initialize CKEditor 5 for the blog description
     ClassicEditor
         .create(document.querySelector('#description'))
         .then(editor => {
@@ -11,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error(error);
         });
 
-    // Handle form submission
     document.getElementById('blogForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -20,13 +18,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const image = document.getElementById('image').files[0];
         const category = document.getElementById('category').value;
         const shortDescription = document.getElementById('shortDescription').value;
-        const description = editorInstance.getData(); // Get CKEditor content
+        const description = editorInstance.getData();
 
-        // Validate the form fields
         if (title && image && category && shortDescription && description.trim()) {
             let blogs = JSON.parse(localStorage.getItem('blogs')) || [];
 
-            // Prepare the blog data to store
             const newBlog = {
                 title: title,
                 category: category,
@@ -39,13 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
             reader.onload = function () {
                 newBlog.image = reader.result;
                 
-                // Append the new blog to the blogs array
                 blogs.push(newBlog);
-
-                // Store the updated blogs array back to localStorage
                 localStorage.setItem('blogs', JSON.stringify(blogs));
 
-                // Redirect to the "" page
                 window.location.href = 'blogDetails.html';
             };
             reader.readAsDataURL(image);
@@ -59,18 +51,15 @@ document.addEventListener('DOMContentLoaded', function () {
       // Retrieve all blogs from localStorage (blog.html)
       const blogs = JSON.parse(localStorage.getItem('blogs')) || [];
 
-      // Get the blogs container
       const blogsContainer = document.getElementById('blogsContainer');
 
       // Function to display blogs
       function displayBlogs(filteredBlogs) {
-          // Clear the container
           blogsContainer.innerHTML = '';
 
-          // Iterate through each blog and display it
           filteredBlogs.forEach((blog, index) => {
               const blogDiv = document.createElement('div');
-              blogDiv.classList.add('blog-container');  // Assign blog-container class to each blog post
+              blogDiv.classList.add('blog-container');
               
               const blogTitle = document.createElement('h3');
               blogTitle.textContent = blog.title;

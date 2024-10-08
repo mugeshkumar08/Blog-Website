@@ -37,7 +37,6 @@
     </form>
 
     <script>
-        // Initialize CKEditor for the description textarea
         let descriptionEditor;
         ClassicEditor
             .create(document.querySelector('#description'))
@@ -48,50 +47,42 @@
                 console.error(error);
             });
 
-        // Get blog index from URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const blogIndex = urlParams.get('index');
 
-        // Retrieve blogs from localStorage
         const blogs = JSON.parse(localStorage.getItem('blogs')) || [];
 
-        // Pre-fill the form with existing blog data
         const blog = blogs[blogIndex];
         document.getElementById('title').value = blog.title;
         document.getElementById('category').value = blog.category;
         document.getElementById('publishedDate').value = blog.publishedDate;
         document.getElementById('shortDescription').value = blog.shortDescription;
 
-        // Since CKEditor is initialized asynchronously, set the description in the editor after it is ready
         window.onload = function() {
             if (descriptionEditor) {
                 descriptionEditor.setData(blog.description);
             }
         };
 
-        // Function to update the blog
         function updateBlog() {
             // Get updated values from the form
             const updatedTitle = document.getElementById('title').value;
             const updatedCategory = document.getElementById('category').value;
             const updatedPublishedDate = document.getElementById('publishedDate').value;
             const updatedShortDescription = document.getElementById('shortDescription').value;
-            const updatedDescription = descriptionEditor.getData(); // Get HTML content from CKEditor
+            const updatedDescription = descriptionEditor.getData();
 
-            // Update the blog object
             blogs[blogIndex] = {
                 ...blog,
                 title: updatedTitle,
                 category: updatedCategory,
                 publishedDate: updatedPublishedDate,
                 shortDescription: updatedShortDescription,
-                description: updatedDescription // Save the HTML content
+                description: updatedDescription 
             };
 
-            // Save the updated blogs array to localStorage
             localStorage.setItem('blogs', JSON.stringify(blogs));
 
-            // Redirect back to the dashboard
             window.location.href = 'dashboard.html';
         }
     </script>
