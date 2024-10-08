@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Detail</title>
+    <link rel="stylesheet" href="blogDetails.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h2><a href="#">Blogs</a></h2>
+        </div>
+        <div class="navLinks">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h2>Your Blog</h2>
+    <div class="blog-detail" id="blogDetail">
+    </div>
+    <a href="blog.html">Back to Blog List</a>
+
+    <script>
+        // Retrieve the blog index from URL parameters
+        const params = new URLSearchParams(window.location.search);
+        const blogIndex = params.get('index');
+
+        // Retrieve all blogs from localStorage
+        const blogs = JSON.parse(localStorage.getItem('blogs')) || [];
+
+        // Check if the blog index is valid
+        if (blogIndex !== null && blogIndex >= 0 && blogIndex < blogs.length) {
+            const blog = blogs[blogIndex]; // Get the blog details using the index
+
+            // Get the blog detail container
+            const blogDetailContainer = document.getElementById('blogDetail');
+
+            // Populate the blog details
+            blogDetailContainer.innerHTML = `
+                <h2>${blog.title}</h2>
+                <img src="${blog.image}" alt="Blog Image">
+                <p><strong>Category:</strong> ${blog.category}</p>
+                <p><strong>Short Description:</strong> ${blog.shortDescription}</p>
+                <p><strong>Description:</strong> ${blog.description}</p>
+            `;
+        } else {
+            // Handle invalid blog index
+            document.getElementById('blogDetail').innerHTML = '<p>Blog not found.</p>';
+        }
+    </script>
+</body>
+</html>

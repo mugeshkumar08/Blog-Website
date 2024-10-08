@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h2><a href="#">Blogs</a></h2>
+        </div>
+        <div class="navLinks">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h2>Blog Dashboard</h2>
+    <div class="container">
+        <table border="1" id="blogTable">
+            <thead>
+                <tr>
+                    <th>Serial Number</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Published Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="blogTableBody">
+                <!-- Table rows will be populated dynamically using JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Retrieve all blogs from localStorage
+        const blogs = JSON.parse(localStorage.getItem('blogs')) || [];
+
+        // Get the table body element
+        const blogTableBody = document.getElementById('blogTableBody');
+
+        // Function to populate table with blog data
+        function populateBlogTable() {
+            // Clear the table body first
+            blogTableBody.innerHTML = '';
+
+            // Loop through the blogs and add rows to the table
+            blogs.forEach((blog, index) => {
+                const row = document.createElement('tr');
+
+                // Serial Number
+                const serialNumberCell = document.createElement('td');
+                serialNumberCell.textContent = index + 1;
+                row.appendChild(serialNumberCell);
+
+                // Blog Title
+                const titleCell = document.createElement('td');
+                titleCell.textContent = blog.title;
+                row.appendChild(titleCell);
+
+                // Blog Category
+                const categoryCell = document.createElement('td');
+                categoryCell.textContent = blog.category;
+                row.appendChild(categoryCell);
+
+                // Published Date
+                const dateCell = document.createElement('td');
+                dateCell.textContent = blog.publishedDate || 'N/A'; // If no date provided, show 'N/A'
+                row.appendChild(dateCell);
+
+                // Action Buttons (Edit/Delete)
+                const actionCell = document.createElement('td');
+
+                // Edit Button
+                const editButton = document.createElement('button');
+                editButton.textContent = 'Edit';
+                editButton.onclick = function() {
+                    editBlog(index);
+                };
+                actionCell.appendChild(editButton);
+
+                // Delete Button
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.style.marginLeft = '10px';
+                deleteButton.onclick = function() {
+                    deleteBlog(index);
+                };
+                actionCell.appendChild(deleteButton);
+
+                row.appendChild(actionCell);
+
+                // Append row to table body
+                blogTableBody.appendChild(row);
+            });
+        }
+
+        // Function to delete a blog
+        function deleteBlog(index) {
+            if (confirm('Are you sure you want to delete this blog?')) {
+                blogs.splice(index, 1); // Remove blog from the array
+                localStorage.setItem('blogs', JSON.stringify(blogs)); // Update localStorage
+                populateBlogTable(); // Refresh table
+            }
+        }
+
+        // Function to edit a blog
+        function editBlog(index) {
+            window.location.href = `editBlog.html?index=${index}`; // Redirect to the edit blog page
+        }
+
+        // Initially populate the blog table
+        populateBlogTable();
+    </script>
+</body>
+</html>

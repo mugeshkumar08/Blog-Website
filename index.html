@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- CKEditor 5 CDN -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h2><a href="#">Blogs</a></h2>
+        </div>
+        <div class="navLinks">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h2>Create a Blog Post</h2>
+        <form id="blogForm">
+            <div class="form-group">
+                <label for="title">Blog Title:</label>
+                <input type="text" id="title" name="title">
+            </div>
+
+            <div class="form-group">
+                <label for="image">Upload Image:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <label for="category">Select Category:</label>
+                <select id="category" name="category">
+                    <option value="tech">Tech</option>
+                    <option value="lifestyle">Lifestyle</option>
+                    <option value="travel">Travel</option>
+                    <option value="food">Food</option>
+                    <option value="business">Business</option>
+                    <option value="politics">Politics</option>
+                    <option value="startups">Startups</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="shortDescription">Short Description:</label>
+                <textarea id="shortDescription" name="shortDescription" rows="3"></textarea>
+            </div>
+
+            <div class="description">
+                <label for="description">Blog Description:</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Submit Blog</button>
+            </div>
+        </form>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

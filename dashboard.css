@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", system-ui;
+}
+
+body{
+    background: url(./Assets/bg-blog.jpg);
+    background-size: cover;
+}
+
+.active{
+    background-color: white;
+}
+
+nav{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(4px) saturate(200%);
+    border-bottom: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, 
+                rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+                rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, 
+                rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+}
+
+.navLinks ul li{
+    display: inline-flex;
+    padding: 0px 30px;
+}
+
+.navLinks{
+    margin-left: 50%;
+}
+
+nav ul li a{
+    color: black;
+    text-decoration: none;
+    padding: 8px 8px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+h1{
+    margin-top: 30px;
+}
+
+h2 a{
+    text-decoration: none;
+    color: black;
+}
+
+nav ul li a:not(.active):hover{
+    background-color: black;
+    color: white;
+}
+
+.logo{
+    margin-left: 40px !important;
+}
+
+
+/* Styling for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Styling for table headers */
+table thead th {
+    background-color: black;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Styling for table rows */
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Alternating row colors */
+}
+
+table tbody tr:hover {
+    background-color: #ddd; /* Hover effect for rows */
+}
+
+/* Styling for table cells */
+table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Styling for buttons */
+button {
+    padding: 8px 12px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: red; 
+}
+
+button:focus {
+    outline: none;
+}
+

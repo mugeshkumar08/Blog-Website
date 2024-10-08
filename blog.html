@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h2><a href="#">Blogs</a></h2>
+        </div>
+        <div class="navLinks">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h2>Your Blog</h2>
+    <div class="form-group">
+        <label for="category">Select Category:</label>
+        <select id="category" name="category">
+            <option value="all">All</option>
+            <option value="tech">Tech</option>
+            <option value="lifestyle">Lifestyle</option>
+            <option value="travel">Travel</option>
+            <option value="food">Food</option>
+            <option value="business">Business</option>
+            <option value="politics">Politics</option>
+            <option value="startups">Startups</option>
+        </select>
+        <button class="filter" onclick="filterBlogs()">Filter</button>
+    </div>
+    <div class="container">
+        <div id="blogsContainer"></div>
+        <a href="index.html">Go back to Home</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
