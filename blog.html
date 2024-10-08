@@ -13,7 +13,7 @@
         </div>
         <div class="navLinks">
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="home.html">Home</a></li>
                 <li><a href="">Blog</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
@@ -34,10 +34,15 @@
             <option value="startups">Startups</option>
         </select>
         <button class="filter" onclick="filterBlogs()">Filter</button>
+
+        <div class="form-group">
+            <label for="search">Search Blogs:</label>
+            <input type="text" id="search" name="search" placeholder="Search by title, category, or description">
+        </div>
     </div>
     <div class="container">
         <div id="blogsContainer"></div>
-        <a href="index.html">Go back to blog list</a>
+        <a class="link" href="index.html">Go back to blog list</a>
     </div>
 
     <script src="script.js"></script>

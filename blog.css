@@ -131,3 +131,22 @@ div{
 option{
     border-radius: 5px;
 }
+
+.form-group{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#search{
+    
+    margin-left: 10px;
+    padding: 8px 20px;
+    border-radius: 16px;
+    border: none;
+    
+}
+
+.link{
+    text-decoration: none;
+}

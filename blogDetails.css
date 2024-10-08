@@ -90,3 +90,12 @@ h2{
     color: #666;
     margin: 5px 0;
 }
+
+.backLink{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-decoration: none;
+    
+}
